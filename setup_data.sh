@@ -10,6 +10,7 @@ curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=${FILE_ID}"
 CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"  
 curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o data/image_arrays_train.zip
 echo "Download Success!!!"
-unzip -q data/image_arrays_train.zip
-unzip -q data/image_arrays_test.zip
+unzip -q data/image_arrays_train.zip -d data
+unzip -q data/image_arrays_test.zip -d data
+rm data/*.zip
 echo "Unzip Success!!!"
